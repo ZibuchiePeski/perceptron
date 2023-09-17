@@ -1,23 +1,24 @@
-from statics.constants import N, speed
+from typing import List, Optional
 
 from BusinessLogic.scaling import Scaling
 from BusinessLogic.weights import Weights
-
-from typing import List, Optional
+from statics.constants import N, speed
 
 
 class Perceptron:
-
+    """Класс работы с перцептроном"""
     def __init__(self):
         self.__pixel_matrix: Optional[List[int]] = None
         self.__weights: Weights = None
 
     def __setPerceptronParams(self, pixel_matrix: Optional[List[int]], weights: Weights) -> None:
+        """Установка значений для работы с перцептроном"""
         self.__pixel_matrix = pixel_matrix
         self.__weights = weights
         self.__weights_matrix: Optional[List[float]] = weights.weights
 
-    def perceptronOutput(self, pixel_matrix: Optional[List[int]], weights: Weights) -> bool:
+    def perceptronOutput(self, pixel_matrix: Optional[List[int]], weights: Weights) -> int:
+        """Расчет выходного значения с применением пороговой функции"""
         self.__setPerceptronParams(pixel_matrix, weights)
 
         total_sum = 0
@@ -36,7 +37,8 @@ class Perceptron:
 
         return output
 
-    def perceptronTrain(self, answer: str, output: bool) -> None:
+    def perceptronTrain(self, answer: str, output: int) -> None:
+        """Обучение нейрона"""
         if answer == 'no':
             if output == 0:
                 test = 1
