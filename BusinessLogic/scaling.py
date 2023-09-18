@@ -1,11 +1,16 @@
-import numpy as np
 from typing import List, Optional
+
+import numpy as np
+from numpy import ndarray
+
 from statics.constants import N
 
-class Scaling:
 
+class Scaling:
+    """Класс работы с масштабированием изображений"""
     @staticmethod
-    def scalePixelMatrix(pixel_matrix: Optional[List[int]]) -> Optional[List[int]]:
+    def scalePixelMatrix(pixel_matrix: Optional[List[int]]) -> ndarray:
+        """Масштабирование изображения под размер экрана"""
         tmp = np.zeros((N, N), dtype=int)
 
         # Находим границы изображения
